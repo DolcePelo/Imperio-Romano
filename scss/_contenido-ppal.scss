@@ -1,0 +1,27 @@
+.titulo-principal {
+    text-align: center;
+    font-size: 5rem;
+    margin-top: 5rem;
+} 
+
+.carrito {
+    width: 3rem;
+    height: 3rem;
+}
+
+.imagen-rome {
+    height: 35rem;
+    object-fit: cover;
+}
+
+.subtitulos-compras{
+    font-size: 4rem;
+    padding-left: .8em;
+
+}
+
+.cards__gral{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}

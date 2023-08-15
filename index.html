@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Romanesco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                    viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M256 0a56 56 0 1 1 0 112A56 56 0 1 1 256 0zM134.1 143.8c3.3-13 15-23.8 30.2-23.8c12.3 0 22.6 7.2 27.7 17c12 23.2 36.2 39 64 39s52-15.8 64-39c5.1-9.8 15.4-17 27.7-17c15.3 0 27 10.8 30.2 23.8c7 27.8 32.2 48.3 62.1 48.3c10.8 0 21-2.7 29.8-7.4c8.4-4.4 18.9-4.5 27.6 .9c13 8 17.1 25 9.2 38L399.7 400H384 343.6 168.4 128 112.3L5.4 223.6c-7.9-13-3.8-30 9.2-38c8.7-5.3 19.2-5.3 27.6-.9c8.9 4.7 19 7.4 29.8 7.4c29.9 0 55.1-20.5 62.1-48.3zM256 224l0 0 0 0h0zM112 432H400l41.4 41.4c4.2 4.2 6.6 10 6.6 16c0 12.5-10.1 22.6-22.6 22.6H86.6C74.1 512 64 501.9 64 489.4c0-6 2.4-11.8 6.6-16L112 432z" />
+                </svg></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <img src="./assets/carrito.png" alt="carrito" class="carrito">
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Imperio Romano</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <!-- <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div> -->
+
+                <div id="carrito__container">
+                </div>
+                <div id="total__container">
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <h1 class="titulo-principal">Imperio Romano Sitio Oficial</h1>
+
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4000">
+                <img src="./assets/coliseo-carrousel.png" class="d-block w-100 imagen-rome" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="./assets/roma-carrousel.png" class="d-block w-100 imagen-rome" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="./assets/gladiador-carrousel.png" class="d-block w-100 imagen-rome" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <hr>
+    <h2 class="subtitulos-compras">Gladiadores</h2>
+    <hr>
+
+    <div class="cards__gral">
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/gladiadores/gladiador1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Espartaco</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__gladiador1">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/gladiadores/gladiador2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Achillia</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__gladiador2">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/gladiadores/gladiador3.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Tigranes</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__gladiador3">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/gladiadores/gladiador4.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Commodus</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__gladiador4">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/gladiadores/gladiador5.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Flamma</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__gladiador5">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/gladiadores/gladiador6.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Priscus</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__gladiador6">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/gladiadores/gladiador7.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Maximus</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__gladiador7">Añadir al Carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    <h2 class="subtitulos-compras">Armas</h2>
+    <hr>
+
+    <div class="cards__gral">
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Espada basica</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma1">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Espada ligera</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma2">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma3.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Espada doble</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma3">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma4.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Espada legendaria</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma4">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma5.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">hacha doble</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma5">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma6.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">hacha simple</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma6">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma7.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">palo de madera</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma7">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armas/arma8.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">lanzas</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__arma8">Añadir al Carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <hr>
+    <h2 class="subtitulos-compras">Armaduras</h2>
+    <hr>
+
+    <div class="cards__gral">
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armaduras/armadura1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Armadura basica</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__armadura1">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armaduras/armadura2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Armadura dorada</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__armadura2">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armaduras/armadura3.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Armadura ligera</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__armadura3">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/armaduras/armadura4.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Armadura negra</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__armadura4">Añadir al Carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    <h2 class="subtitulos-compras">Escudos</h2>
+    <hr>
+
+    <div class="cards__gral">
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/escudos/escudo1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Escudo basica</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__escudo1">Añadir al Carrito</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/escudos/escudo2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Escudo hierro</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__escudo2">Añadir al Carrito</a>
+            </div>
+        </div>
+        
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <img src="./assets/escudos/escudo3.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 2rem;">Escudo reforzado</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary" style="font-size: 1.5rem;" id="btn__escudo3">Añadir al Carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://kit.fontawesome.com/0e72932d81.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
+</html>
