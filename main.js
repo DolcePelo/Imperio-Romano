@@ -314,9 +314,6 @@ function cargarCarrito(){
     }
 }
 
-// window.addEventListener('load', () => {
-//     cargarCarrito();
-// });
 
 const btnRecuperarCarrito = document.getElementById('btn__recuperarCarrito');
 
