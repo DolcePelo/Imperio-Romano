@@ -88,19 +88,19 @@ class Escudo {
 // Armas
 const arma1 = new Arma("Espada basica", 10, 5, 17)
 const arma2 = new Arma("Espada ligera", 12, 7, 16)
-const arma3 = new Arma("Palo De Madera", 3, 3, 2)
-const arma4 = new Arma("Espada doble", 11, 8, 12)
-const arma5 = new Arma("Espada legendaria", 22, 18, 30)
-const arma6 = new Arma("Hacha doble", 18, 16, 25)
-const arma7 = new Arma("Hacha simple", 14, 12, 20)
+const arma3 = new Arma("Espada doble", 11, 8, 12)
+const arma4 = new Arma("Espada legendaria", 22, 18, 30)
+const arma5 = new Arma("Hacha doble", 18, 16, 25)
+const arma6 = new Arma("Hacha simple", 14, 12, 20)
+const arma7 = new Arma("Palo De Madera", 3, 3, 2)
 const arma8 = new Arma("lanzas", 10, 7, 17)
 
 
 // Armaduras
-const armadura1 = new Armadura("Armadura basica", 50, 22)
-const armadura2 = new Armadura("Armadura dorada", 60, 25)
-const armadura3 = new Armadura("Armadura ligera", 70, 28)
-const armadura4 = new Armadura("Armadura Negra", 75, 30)
+const armor1 = new Armadura("Armadura basica", 50, 22)
+const armor2 = new Armadura("Armadura dorada", 60, 25)
+const armor3 = new Armadura("Armadura ligera", 70, 28)
+const armor4 = new Armadura("Armadura Negra", 75, 30)
 
 // Escudos
 const escudo1 = new Escudo("Escudo basico", 10, 5)
@@ -129,7 +129,12 @@ for (let i = 1; i <= numGladiadores; i++) {
     const btn_gladiador = document.getElementById(`btn__gladiador${i}`);
     btn_gladiador.addEventListener('click', (e) => {
         e.preventDefault();
-        carrito.push(`gladiador${i}`);
+
+        if (carrito[`gladiador${i}`]) {
+            carrito[`gladiador${i}`] += 1;
+        } else {
+            carrito[`gladiador${i}`] = 1;
+        }
 
         Toastify({
             text: "Añadido al carrito",
@@ -144,6 +149,7 @@ for (let i = 1; i <= numGladiadores; i++) {
         }).showToast();
 
         actualizarCarrito()
+        guardarCarrito()
     });
 }
 
@@ -154,7 +160,13 @@ for (let i = 1; i <= numArmas; i++) {
     const btn_armas = document.getElementById(`btn__arma${i}`);
     btn_armas.addEventListener('click', (e) => {
         e.preventDefault();
-        carrito.push(`arma${i}`);
+
+        if (carrito[`arma${i}`]) {
+            carrito[`arma${i}`] += 1;
+        } else {
+            carrito[`arma${i}`] = 1;
+        }
+
 
         Toastify({
             text: "Añadido al carrito",
@@ -169,6 +181,7 @@ for (let i = 1; i <= numArmas; i++) {
         }).showToast();
 
         actualizarCarrito()
+        guardarCarrito()
     });
 }
 
@@ -179,11 +192,18 @@ for (let i = 1; i <= numArmaduras; i++) {
     const btn_armaduras = document.getElementById(`btn__armadura${i}`);
     btn_armaduras.addEventListener('click', (e) => {
         e.preventDefault();
-        carrito.push(`armadura${i}`);
+
+        if (carrito[`armor${i}`]) {
+            carrito[`armor${i}`] += 1;
+        } else {
+            carrito[`armor${i}`] = 1;
+        }
+
 
         Toastify({
             text: "Añadido al carrito",
             className: "info",
+            position: "left",
             style: {
                 background: "linear-gradient(to right, #00b09b, #96c93d)",
                 width: '20rem',
@@ -191,6 +211,8 @@ for (let i = 1; i <= numArmaduras; i++) {
                 fontSize: '1.5rem'
             }
         }).showToast();
+        actualizarCarrito()
+        guardarCarrito()
     });
 }
 
@@ -200,11 +222,18 @@ for (let i = 1; i <= numEscudos; i++) {
     const btn_escudos = document.getElementById(`btn__escudo${i}`);
     btn_escudos.addEventListener('click', (e) => {
         e.preventDefault();
-        carrito.push(`escudo${i}`);
+
+        if (carrito[`escudo${i}`]) {
+            carrito[`escudo${i}`] += 1;
+        } else {
+            carrito[`escudo${i}`] = 1;
+        }
+
 
         Toastify({
             text: "Añadido al carrito",
             className: "info",
+            position: "left",
             style: {
                 background: "linear-gradient(to right, #00b09b, #96c93d)",
                 width: '20rem',
@@ -212,6 +241,8 @@ for (let i = 1; i <= numEscudos; i++) {
                 fontSize: '1.5rem'
             }
         }).showToast();
+        actualizarCarrito()
+        guardarCarrito()
     });
 }
 
@@ -219,13 +250,15 @@ for (let i = 1; i <= numEscudos; i++) {
 // ------------------------------------------------------ //
 
 
-let carrito = [];
+let carrito = {};
 
 let gladiadores = [gladiador1, gladiador2, gladiador3, gladiador4, gladiador5, gladiador6, gladiador7];
 
-let armas = [arma1,arma2,arma3,arma4,arma5,arma6,arma7,arma8];
+let armas = [arma1, arma2, arma3, arma4, arma5, arma6, arma7, arma8];
 
+let armors = [armor1, armor2, armor3, armor4];
 
+let escudos = [escudo1, escudo2, escudo3];
 
 function actualizarCarrito() {
     const carritoContainer = document.getElementById('carrito__container');
@@ -233,36 +266,60 @@ function actualizarCarrito() {
 
     let total = 0;
 
-    carrito.forEach((item) => {
+    for (const item in carrito) {
         let itemNombre = '';
         let itemPrecio = 0;
 
         if (item.startsWith('gladiador')) {
-            const gladiadorIndex = parseInt(item.substring(9)) - 1; //toma gladiador del array le quita 9 caracteres a gladiador y se queda con el num del final, luego le resta 1 para que sea indice y no posicion
+            const gladiadorIndex = parseInt(item.substring(9)) - 1;
             itemNombre = gladiadores[gladiadorIndex].nombre;
             itemPrecio = gladiadores[gladiadorIndex].precio;
         } else if (item.startsWith('arma')) {
             const armaIndex = parseInt(item.substring(4)) - 1;
             itemNombre = armas[armaIndex].nombre;
             itemPrecio = armas[armaIndex].precio;
-        } else if (item.startsWith('armadura')) {
-            // Lógica similar para armas, armaduras y escudos
+        } else if (item.startsWith('armor')) {
+            const armorIndex = parseInt(item.substring(5)) - 1;
+            itemNombre = armors[armorIndex].nombre;
+            itemPrecio = armors[armorIndex].precio;
         } else if (item.startsWith('escudo')) {
-            // Lógica similar para armas, armaduras y escudos
+            const escudoIndex = parseInt(item.substring(6)) - 1;
+            itemNombre = escudos[escudoIndex].nombre;
+            itemPrecio = escudos[escudoIndex].precio;
         }
 
-        total += itemPrecio;
+        const cantidad = carrito[item];
+        total += itemPrecio * cantidad;
 
         const itemDiv = document.createElement('div');
-        itemDiv.innerHTML = `${itemNombre}: $${itemPrecio}`;
+        itemDiv.innerHTML = `${itemNombre} x${cantidad}: $${itemPrecio * cantidad}`;
         carritoContainer.appendChild(itemDiv);
-    });
-
+    }
 
     const totalContainer = document.getElementById('total__container');
     totalContainer.innerHTML = `Total: $${total}`;
 }
 
 
+function guardarCarrito(){
+    const carritoJSON = JSON.stringify(carrito);
+    localStorage.setItem("carritoData",carritoJSON)
+}
 
+function cargarCarrito(){
+    const carritoJSON = localStorage.getItem("carritoData");
+    if(carritoJSON){
+        carrito = JSON.parse(carritoJSON);
+        actualizarCarrito();
+    }
+}
 
+// window.addEventListener('load', () => {
+//     cargarCarrito();
+// });
+
+const btnRecuperarCarrito = document.getElementById('btn__recuperarCarrito');
+
+btnRecuperarCarrito.addEventListener('click',()=>{
+    cargarCarrito()
+})
