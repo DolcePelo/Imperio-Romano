@@ -182,6 +182,7 @@ for (let i = 1; i <= numArmas; i++) {
 
         actualizarCarrito()
         guardarCarrito()
+    
     });
 }
 
@@ -291,9 +292,19 @@ function actualizarCarrito() {
         const cantidad = carrito[item];
         total += itemPrecio * cantidad;
 
+
         const itemDiv = document.createElement('div');
-        itemDiv.innerHTML = `${itemNombre} x${cantidad}: $${itemPrecio * cantidad}`;
+        itemDiv.innerHTML = `${itemNombre} x${cantidad}: $${itemPrecio * cantidad} <a class="btnDelete">x</a>`;
         carritoContainer.appendChild(itemDiv);
+
+
+        let btnDelete = itemDiv.querySelector('.btnDelete')
+        btnDelete.addEventListener('click',()=>{    
+            delete carrito[item]
+            actualizarCarrito()
+            
+        })
+
     }
 
     const totalContainer = document.getElementById('total__container');
@@ -313,10 +324,11 @@ function cargarCarrito(){
         actualizarCarrito();
     }
 }
+window.addEventListener('load',cargarCarrito)
 
 
-const btnRecuperarCarrito = document.getElementById('btn__recuperarCarrito');
 
-btnRecuperarCarrito.addEventListener('click',()=>{
-    cargarCarrito()
-})
+
+
+
+
