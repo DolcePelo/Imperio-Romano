@@ -306,9 +306,15 @@ function actualizarCarrito() {
         })
 
     }
-
+    
     const totalContainer = document.getElementById('total__container');
     totalContainer.innerHTML = `Total: $${total}`;
+    
+    
+    const itemContador = document.getElementById('itemCount');
+    const sumaTotalItems = Object.values(carrito).reduce((acumulador,numero) => acumulador + numero,0)
+    itemContador.innerText = sumaTotalItems;
+
 }
 
 

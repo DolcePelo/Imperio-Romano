@@ -42,7 +42,8 @@ body {
       flex-wrap: wrap;
 }
 
-#carrito__container, #total__container {
+#carrito__container,
+#total__container {
   margin: 0.3rem 1rem;
   font-size: 2.5rem;
 }
@@ -65,4 +66,28 @@ body {
 
 .btnDelete:hover {
   cursor: pointer;
+}
+
+.notification {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  position: absolute;
+  top: 2.5rem;
+  right: 0.1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
