@@ -182,7 +182,7 @@ for (let i = 1; i <= numArmas; i++) {
 
         actualizarCarrito()
         guardarCarrito()
-    
+
     });
 }
 
@@ -299,38 +299,89 @@ function actualizarCarrito() {
 
 
         let btnDelete = itemDiv.querySelector('.btnDelete')
-        btnDelete.addEventListener('click',()=>{    
+        btnDelete.addEventListener('click', () => {
             delete carrito[item]
             actualizarCarrito()
-            
+
         })
 
     }
-    
+
     const totalContainer = document.getElementById('total__container');
     totalContainer.innerHTML = `Total: $${total}`;
-    
-    
+
+
     const itemContador = document.getElementById('itemCount');
-    const sumaTotalItems = Object.values(carrito).reduce((acumulador,numero) => acumulador + numero,0)
+    const sumaTotalItems = Object.values(carrito).reduce((acumulador, numero) => acumulador + numero, 0)
     itemContador.innerText = sumaTotalItems;
 
+
+    const montoAPagar = document.querySelector('.montoAPagar')
+    montoAPagar.innerHTML = `Total: $${total}`;
 }
 
 
-function guardarCarrito(){
+function guardarCarrito() {
     const carritoJSON = JSON.stringify(carrito);
-    localStorage.setItem("carritoData",carritoJSON)
+    localStorage.setItem("carritoData", carritoJSON)
 }
 
-function cargarCarrito(){
+function cargarCarrito() {
     const carritoJSON = localStorage.getItem("carritoData");
-    if(carritoJSON){
+    if (carritoJSON) {
         carrito = JSON.parse(carritoJSON);
         actualizarCarrito();
     }
 }
-window.addEventListener('load',cargarCarrito)
+window.addEventListener('load', cargarCarrito);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const openModalBtn = document.getElementById('btn__pagar');
+    const modal = document.getElementById('myModal');
+    const closeModal = modal.querySelector('.close');
+    const pagarAhora = document.getElementById('pay-now');
+
+    openModalBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none'
+    });
+
+
+    pagarAhora.addEventListener('click', () => {
+        Toastify({
+            text: "Pago exitoso",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+                width: '20rem',
+                fontFamily: 'serif',
+                fontSize: '1.5rem'
+
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+
+        setTimeout(()=>{
+            modal.style.display = 'none'
+        }, 1000)
+    })
+
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    })
+})
+
 
 
 
