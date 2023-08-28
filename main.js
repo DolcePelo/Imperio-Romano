@@ -357,9 +357,9 @@ document.addEventListener('DOMContentLoaded', function () {
             destination: "https://github.com/apvarun/toastify-js",
             newWindow: true,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "left", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
+            gravity: "top", 
+            position: "left", 
+            stopOnFocus: true, 
             style: {
                 background: "linear-gradient(to right, #00b09b, #96c93d)",
                 width: '20rem',
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fontSize: '1.5rem'
 
             },
-            onClick: function () { } // Callback after click
+            onClick: function () { } 
         }).showToast();
 
         setTimeout(()=>{
@@ -382,6 +382,29 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 })
 
+
+
+
+// ---------- API de cotización del dolar ---------------//
+const lista = document.getElementById('listado')
+
+let URL = "https://dolarapi.com/v1/dolares"
+
+fetch(URL)
+.then((response) => response.json())
+.then((data) => {
+    
+    data.forEach((post) => {
+        if(post.nombre === "Blue" || post.nombre === "Oficial"){  //No me interesan todas las cotizaciones
+        const li = document.createElement('li')
+        li.textContent = `
+            Tipo: ${post.nombre} = Compra: ${post.compra} / Venta: ${post.venta}
+        `
+
+        lista.appendChild(li)
+    }
+    })
+})
 
 
 
